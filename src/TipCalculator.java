@@ -4,7 +4,7 @@ public class TipCalculator {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Welcome to the Krusty Krab");
+        System.out.println("Welcome to the Krusty Krab!");
         System.out.println();
 
         System.out.println("-----------GALLEY GRUBS-----------");
@@ -30,5 +30,7 @@ public class TipCalculator {
         System.out.println("SEAFOAM SODA S...............$1.00");
         System.out.println("SEAFOAM SODA M...............$1.25");
         System.out.println("SEAFOAM SODA L...............$1.50");
+        System.out.println();
+        System.out.println("----------------------------------");
     }
 }
