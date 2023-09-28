@@ -1,8 +1,10 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class TipCalculator {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        Random r = new Random();
 
         System.out.println("Welcome to the Krusty Krab!");
         System.out.println();
@@ -32,5 +34,14 @@ public class TipCalculator {
         System.out.println("SEAFOAM SODA L...............$1.50");
         System.out.println();
         System.out.println("----------------------------------");
+
+        String order = null;
+
+        int upperLimit = 3;
+        int quote = r.nextInt(upperLimit);
+
+        while (order.toLowerCase() != ("done")) {
+            System.out.print
+        }
     }
 }
