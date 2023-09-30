@@ -33,7 +33,7 @@ public class TipCalculator {
         System.out.println("TRIPLE KRABBY MEAL...........$4.00");
         System.out.println("SALTY SEA DOG................$1.25");
         System.out.println("FOOTLONG.....................$2.00");
-        System.out.println("SAILOR'S SURPRISE............$3.00");
+        System.out.println("SAILORS SURPRISE.............$3.00");
         System.out.println("GOLDEN LOAF..................$2.00");
         System.out.println("KRUSTY KRAB PIZZA...........$10.00");
         System.out.println();
@@ -78,7 +78,7 @@ public class TipCalculator {
             }
             int quote = r.nextInt(upperLimit);
             if (items.isEmpty()) {
-                System.out.print("(Enter the first item you would like to order (please enter the name how it appears on the menu): ");
+                System.out.print("(Enter the first item you would like to order, either how it appears on the menu or with no spaces): ");
             } else {
                 System.out.println(dialogueSquidward.get(quote));
                 System.out.print("Enter 'done' to finish your order, or enter another item you want here: ");
@@ -99,6 +99,30 @@ public class TipCalculator {
                 items.add("Triple Krabby Meal");
             } else if (order.toLowerCase().equals("salty sea dog") || order.toLowerCase().equals("saltyseadog")) { //line 100!!! #ihatemyself
                 items.add("Salty Sea Dog");
+            } else if (order.toLowerCase().equals("footlong")) {
+                items.add("Footlong");
+            } else if (order.toLowerCase().equals("sailors surprise") || order.toLowerCase().equals("sailorssurprise")) {
+                items.add("Sailor's Surprise");
+            } else if (order.toLowerCase().equals("golden loaf") || order.toLowerCase().equals("goldenloaf")) {
+                items.add("Golden Loaf");
+            } else if (order.toLowerCase().equals("krusty krab pizza") || order.toLowerCase().equals("krustykrabpizza")) {
+                items.add("Krusty Krab Pizza");
+            } else if (order.toLowerCase().equals("coral bits s") || order.toLowerCase().equals("coralbitss")) { //i know that i can just make it an option to choose the size
+                items.add("Coral Bits (Small)");
+            } else if (order.toLowerCase().equals("coral bits m") || order.toLowerCase().equals("coralbitsm")) { //however,
+                items.add("Coral Bits (Medium)");
+            } else if (order.toLowerCase().equals("coral bits l") || order.toLowerCase().equals("coralbitsl")) { //im too lazy to implement that
+                items.add("Coral Bits (Large)");
+            } else if (order.toLowerCase().equals("seafoam soda s") || order.toLowerCase().equals("seafoamsodas")) { //soooooooooooooo,
+                items.add("Seafoam Soda (Small)");
+            } else if (order.toLowerCase().equals("seafoam soda m") || order.toLowerCase().equals("seafoamsodam")) { //sadly, (not really)
+                items.add("Seafoam Soda (Medium)");
+            } else if (order.toLowerCase().equals("seafoam soda l") || order.toLowerCase().equals("seafoamsodal")) { //you have to deal with it (my bad) (haha)
+                items.add("Seafoam Soda (Large)");
+            } else if (order.toLowerCase().equals("kelp rings") || order.toLowerCase().equals("kelprings")) {
+                items.add("Kelp Rings");
+            } else if (order.toLowerCase().equals("kelp shake") || order.toLowerCase().equals("kelpshake")) {
+                items.add("Kelp Shake");
             }
         }
     }
