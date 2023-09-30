@@ -1,8 +1,8 @@
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Random;
 import java.util.List;
-import java.util.Timer;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /*
 this is a very bad idea but i love bad ideas
@@ -16,7 +16,6 @@ public class TipCalculator {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         Random r = new Random();
-        Timer t = new Timer();
 
         //appreciate how long this took because i refuse to ever do this again
         System.out.println("Welcome to the Krusty Krab!");
@@ -52,6 +51,8 @@ public class TipCalculator {
 
         //different variables for dialogue, ordered items, etc. (look at the variable names to see what they are)
         String order = "";
+        int amt;
+        boolean validOrder = false;
 
         int upperLimit = 3;
 
@@ -60,8 +61,8 @@ public class TipCalculator {
         List<String> dialogueSquidward = new ArrayList<>() {{ //average brooklyn tech student
             add("Squidward: We don't have all day here, what else would you like to order?");
             add("Squidward: Alright, what's next? Or are you done?");
-            add("Squidward: How can anyone even eat this food..? Alright, what's next?");
-            add("Squidward: You might as well order the entire Krusty Krab... Next?"); //wow, rude
+            add("Squidward: How can anyone even eat this food, it's repulsive!");
+            add("Squidward: You might as well order the entire Krusty Krab, Patrick would appreciate that."); //wow, rude
             add("Squidward: Please, don't order anything else, for my sake.");
         }};
         List<String> dialogueSpongebob = new ArrayList<>() {{ // *insert Spongebob laugh track here*
@@ -71,59 +72,95 @@ public class TipCalculator {
             add("Spongebob: Wow, a personal best for this amount of food! Man, I'm good!");
         }};
 
-        //while loop goes here, pray that it works for my sanity
-        while (order.toLowerCase() != ("done")) {
-            if (items.size() > 10) {
+        //while loop goes here, pray that it works for my sanity (update 1: it did not work and im going insane)
+        while (!order.equalsIgnoreCase("done")) {
+            if (items.size() > 5) {
                 upperLimit += 2;
             }
             int quote = r.nextInt(upperLimit);
             if (items.isEmpty()) {
                 System.out.print("(Enter the first item you would like to order, either how it appears on the menu or with no spaces): ");
+                order = scan.nextLine();
             } else {
                 System.out.println(dialogueSquidward.get(quote));
-                System.out.print("Enter 'done' to finish your order, or enter another item you want here: ");
+                System.out.print("(Enter 'done' to finish your order, or enter another item you want here): ");
+                order = scan.nextLine();
             }
-            order = scan.nextLine();
             //the great wall of if statements, this is going to take forever to type out
-            if (order.toLowerCase().equals("krabby patty") || order.toLowerCase().equals("krabbypatty")) {
+            if (order.equalsIgnoreCase("krabby patty") || order.equalsIgnoreCase("krabbypatty")) {
                 items.add("Krabby Patty");
-            } else if (order.toLowerCase().equals("double krabby patty") || order.toLowerCase().equals("doublekrabbypatty")) {
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("double krabby patty") || order.equalsIgnoreCase("doublekrabbypatty")) {
                 items.add("Double Krabby Patty");
-            } else if (order.toLowerCase().equals("triple krabby patty") || order.toLowerCase().equals("triplekrabbypatty")) {
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("triple krabby patty") || order.equalsIgnoreCase("triplekrabbypatty")) {
                 items.add("Triple Krabby Patty");
-            } else if (order.toLowerCase().equals("krabby meal") || order.toLowerCase().equals("krabbymeal")) {
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("krabby meal") || order.equalsIgnoreCase("krabbymeal")) {
                 items.add("Krabby Meal");
-            } else if (order.toLowerCase().equals("double krabby meal") || order.toLowerCase().equals("doublekrabbymeal")) {
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("double krabby meal") || order.equalsIgnoreCase("doublekrabbymeal")) {
                 items.add("Double Krabby Meal");
-            } else if (order.toLowerCase().equals("triple krabby meal") || order.toLowerCase().equals("triplekrabbymeal")) {
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("triple krabby meal") || order.equalsIgnoreCase("triplekrabbymeal")) {
                 items.add("Triple Krabby Meal");
-            } else if (order.toLowerCase().equals("salty sea dog") || order.toLowerCase().equals("saltyseadog")) { //line 100!!! #ihatemyself
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("salty sea dog") || order.equalsIgnoreCase("saltyseadog")) { //line 100!!! #ihatemyself
                 items.add("Salty Sea Dog");
-            } else if (order.toLowerCase().equals("footlong")) {
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("footlong")) {
                 items.add("Footlong");
-            } else if (order.toLowerCase().equals("sailors surprise") || order.toLowerCase().equals("sailorssurprise")) {
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("sailors surprise") || order.equalsIgnoreCase("sailorssurprise")) {
                 items.add("Sailor's Surprise");
-            } else if (order.toLowerCase().equals("golden loaf") || order.toLowerCase().equals("goldenloaf")) {
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("golden loaf") || order.equalsIgnoreCase("goldenloaf")) {
                 items.add("Golden Loaf");
-            } else if (order.toLowerCase().equals("krusty krab pizza") || order.toLowerCase().equals("krustykrabpizza")) {
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("krusty krab pizza") || order.equalsIgnoreCase("krustykrabpizza")) {
                 items.add("Krusty Krab Pizza");
-            } else if (order.toLowerCase().equals("coral bits s") || order.toLowerCase().equals("coralbitss")) { //i know that i can just make it an option to choose the size
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("coral bits s") || order.equalsIgnoreCase("coralbitss")) { //i know that i can just make it an option to choose the size
                 items.add("Coral Bits (Small)");
-            } else if (order.toLowerCase().equals("coral bits m") || order.toLowerCase().equals("coralbitsm")) { //however,
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("coral bits m") || order.equalsIgnoreCase("coralbitsm")) { //however,
                 items.add("Coral Bits (Medium)");
-            } else if (order.toLowerCase().equals("coral bits l") || order.toLowerCase().equals("coralbitsl")) { //im too lazy to implement that
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("coral bits l") || order.equalsIgnoreCase("coralbitsl")) { //im too lazy to implement that
                 items.add("Coral Bits (Large)");
-            } else if (order.toLowerCase().equals("seafoam soda s") || order.toLowerCase().equals("seafoamsodas")) { //soooooooooooooo,
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("seafoam soda s") || order.equalsIgnoreCase("seafoamsodas")) { //soooooooooooooo,
                 items.add("Seafoam Soda (Small)");
-            } else if (order.toLowerCase().equals("seafoam soda m") || order.toLowerCase().equals("seafoamsodam")) { //sadly, (not really)
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("seafoam soda m") || order.equalsIgnoreCase("seafoamsodam")) { //sadly, (not really)
                 items.add("Seafoam Soda (Medium)");
-            } else if (order.toLowerCase().equals("seafoam soda l") || order.toLowerCase().equals("seafoamsodal")) { //you have to deal with it (my bad) (haha)
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("seafoam soda l") || order.equalsIgnoreCase("seafoamsodal")) { //you have to deal with it (my bad) (haha)
                 items.add("Seafoam Soda (Large)");
-            } else if (order.toLowerCase().equals("kelp rings") || order.toLowerCase().equals("kelprings")) {
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("kelp rings") || order.equalsIgnoreCase("kelprings")) {
                 items.add("Kelp Rings");
-            } else if (order.toLowerCase().equals("kelp shake") || order.toLowerCase().equals("kelpshake")) {
+                validOrder = true;
+            } else if (order.equalsIgnoreCase("kelp shake") || order.equalsIgnoreCase("kelpshake")) {
                 items.add("Kelp Shake");
+                validOrder = true;
+            } else if (!validOrder) {
+                System.out.println("Squidward: Please actually order something *from* the menu, or leave.");
+                order = "";
+            } //the end of the great wall of if statements, surprisingly didn't take that long to type (still really boring and probably doesn't work anyways)
+            
+            if (validOrder) {
+                System.out.print("(Enter how many you would like here): ");
+                amt = scan.nextInt();
+                amounts.add(amt);
             }
+            validOrder = false;
+        } //the end of the while loop, now time to get to the other stuff
+        
+        System.out.println("Squidward: Alright Spongebob, here's the order. Don't mess it up!");
+        System.out.println("Sponegbob: On it!");
+        if (items.size() < 5) {
+
         }
     }
 }
