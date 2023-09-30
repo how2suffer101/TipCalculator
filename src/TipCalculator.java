@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /*
@@ -50,7 +47,7 @@ public class TipCalculator {
         System.out.println("----------------------------------");
 
         //different variables for dialogue, ordered items, etc. (look at the variable names to see what they are)
-        String order = "";
+        String order = "start";
         int amt;
         boolean validOrder = false;
 
@@ -87,76 +84,78 @@ public class TipCalculator {
                 order = scan.nextLine();
             }
             //the great wall of if statements, this is going to take forever to type out
-            if (order.equalsIgnoreCase("krabby patty") || order.equalsIgnoreCase("krabbypatty")) {
-                items.add("Krabby Patty");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("double krabby patty") || order.equalsIgnoreCase("doublekrabbypatty")) {
-                items.add("Double Krabby Patty");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("triple krabby patty") || order.equalsIgnoreCase("triplekrabbypatty")) {
-                items.add("Triple Krabby Patty");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("krabby meal") || order.equalsIgnoreCase("krabbymeal")) {
-                items.add("Krabby Meal");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("double krabby meal") || order.equalsIgnoreCase("doublekrabbymeal")) {
-                items.add("Double Krabby Meal");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("triple krabby meal") || order.equalsIgnoreCase("triplekrabbymeal")) {
-                items.add("Triple Krabby Meal");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("salty sea dog") || order.equalsIgnoreCase("saltyseadog")) { //line 100!!! #ihatemyself
-                items.add("Salty Sea Dog");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("footlong")) {
-                items.add("Footlong");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("sailors surprise") || order.equalsIgnoreCase("sailorssurprise")) {
-                items.add("Sailor's Surprise");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("golden loaf") || order.equalsIgnoreCase("goldenloaf")) {
-                items.add("Golden Loaf");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("krusty krab pizza") || order.equalsIgnoreCase("krustykrabpizza")) {
-                items.add("Krusty Krab Pizza");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("coral bits s") || order.equalsIgnoreCase("coralbitss")) { //i know that i can just make it an option to choose the size
-                items.add("Coral Bits (Small)");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("coral bits m") || order.equalsIgnoreCase("coralbitsm")) { //however,
-                items.add("Coral Bits (Medium)");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("coral bits l") || order.equalsIgnoreCase("coralbitsl")) { //im too lazy to implement that
-                items.add("Coral Bits (Large)");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("seafoam soda s") || order.equalsIgnoreCase("seafoamsodas")) { //soooooooooooooo,
-                items.add("Seafoam Soda (Small)");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("seafoam soda m") || order.equalsIgnoreCase("seafoamsodam")) { //sadly, (not really)
-                items.add("Seafoam Soda (Medium)");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("seafoam soda l") || order.equalsIgnoreCase("seafoamsodal")) { //you have to deal with it (my bad) (haha)
-                items.add("Seafoam Soda (Large)");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("kelp rings") || order.equalsIgnoreCase("kelprings")) {
-                items.add("Kelp Rings");
-                validOrder = true;
-            } else if (order.equalsIgnoreCase("kelp shake") || order.equalsIgnoreCase("kelpshake")) {
-                items.add("Kelp Shake");
-                validOrder = true;
-            } else if (!validOrder) {
-                System.out.println("Squidward: Please actually order something *from* the menu, or leave.");
-                order = "";
-            } //the end of the great wall of if statements, surprisingly didn't take that long to type (still really boring and probably doesn't work anyways)
-            
-            if (validOrder) {
-                System.out.print("(Enter how many you would like here): ");
-                amt = scan.nextInt();
-                amounts.add(amt);
+            if (!Objects.equals(order, "")) {
+                if (order.equalsIgnoreCase("krabby patty") || order.equalsIgnoreCase("krabbypatty")) {
+                    items.add("Krabby Patty");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("double krabby patty") || order.equalsIgnoreCase("doublekrabbypatty")) {
+                    items.add("Double Krabby Patty");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("triple krabby patty") || order.equalsIgnoreCase("triplekrabbypatty")) {
+                    items.add("Triple Krabby Patty");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("krabby meal") || order.equalsIgnoreCase("krabbymeal")) {
+                    items.add("Krabby Meal");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("double krabby meal") || order.equalsIgnoreCase("doublekrabbymeal")) {
+                    items.add("Double Krabby Meal");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("triple krabby meal") || order.equalsIgnoreCase("triplekrabbymeal")) {
+                    items.add("Triple Krabby Meal");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("salty sea dog") || order.equalsIgnoreCase("saltyseadog")) { //line 100!!! #ihatemyself
+                    items.add("Salty Sea Dog");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("footlong")) {
+                    items.add("Footlong");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("sailors surprise") || order.equalsIgnoreCase("sailorssurprise")) {
+                    items.add("Sailor's Surprise");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("golden loaf") || order.equalsIgnoreCase("goldenloaf")) {
+                    items.add("Golden Loaf");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("krusty krab pizza") || order.equalsIgnoreCase("krustykrabpizza")) {
+                    items.add("Krusty Krab Pizza");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("coral bits s") || order.equalsIgnoreCase("coralbitss")) { //i know that i can just make it an option to choose the size
+                    items.add("Coral Bits (Small)");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("coral bits m") || order.equalsIgnoreCase("coralbitsm")) { //however,
+                    items.add("Coral Bits (Medium)");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("coral bits l") || order.equalsIgnoreCase("coralbitsl")) { //im too lazy to implement that
+                    items.add("Coral Bits (Large)");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("seafoam soda s") || order.equalsIgnoreCase("seafoamsodas")) { //soooooooooooooo,
+                    items.add("Seafoam Soda (Small)");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("seafoam soda m") || order.equalsIgnoreCase("seafoamsodam")) { //sadly, (not really)
+                    items.add("Seafoam Soda (Medium)");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("seafoam soda l") || order.equalsIgnoreCase("seafoamsodal")) { //you have to deal with it (my bad) (haha)
+                    items.add("Seafoam Soda (Large)");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("kelp rings") || order.equalsIgnoreCase("kelprings")) {
+                    items.add("Kelp Rings");
+                    validOrder = true;
+                } else if (order.equalsIgnoreCase("kelp shake") || order.equalsIgnoreCase("kelpshake")) {
+                    items.add("Kelp Shake");
+                    validOrder = true;
+                }
+
+                if (validOrder) {
+                    System.out.print("(Enter how many you would like here): ");
+                    amt = scan.nextInt();
+                    amounts.add(amt);
+                }
+                validOrder = false;
+            } //testing
+            if (order.isEmpty()) {
+                System.out.println("Squidward: Please tell me what you want from the menu, or leave. Or just leave right now.");
             }
-            validOrder = false;
-        } //the end of the while loop, now time to get to the other stuff
-        
+        } //the end of the while loop!
+
         System.out.println("Squidward: Alright Spongebob, here's the order. Don't mess it up!");
         System.out.println("Sponegbob: On it!");
         if (items.size() < 5) {
