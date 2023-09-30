@@ -57,15 +57,15 @@ public class TipCalculator {
 
         List<String> items = new ArrayList<>();
         List<Integer> amounts = new ArrayList<>();
-        List<String> dialogueSquidward = new ArrayList<>() {{
+        List<String> dialogueSquidward = new ArrayList<>() {{ //average brooklyn tech student
             add("Squidward: We don't have all day here, what else would you like to order?");
             add("Squidward: Alright, what's next? Or are you done?");
             add("Squidward: How can anyone even eat this food..? Alright, what's next?");
             add("Squidward: You might as well order the entire Krusty Krab... Next?"); //wow, rude
             add("Squidward: Please, don't order anything else, for my sake.");
         }};
-        List<String> dialogueSpongebob = new ArrayList<>() {{
-            add("Spongebob: Ooooorder up!");
+        List<String> dialogueSpongebob = new ArrayList<>() {{ // *insert Spongebob laugh track here*
+            add("Spongebob: Ooooorder up!"); //literally so iconic that i couldn't not include this
             add("Spongebob: All done! Enjoy!");
             add("Spongebob: It helps having the best coworker ever to brighten the work day, right Squidward?"); //unique Squidward dialogue if this is printed
             add("Spongebob: Wow, a personal best for this amount of food! Man, I'm good!");
@@ -84,10 +84,21 @@ public class TipCalculator {
                 System.out.print("Enter 'done' to finish your order, or enter another item you want here: ");
             }
             order = scan.nextLine();
+            //the great wall of if statements, this is going to take forever to type out
             if (order.toLowerCase().equals("krabby patty") || order.toLowerCase().equals("krabbypatty")) {
                 items.add("Krabby Patty");
             } else if (order.toLowerCase().equals("double krabby patty") || order.toLowerCase().equals("doublekrabbypatty")) {
                 items.add("Double Krabby Patty");
+            } else if (order.toLowerCase().equals("triple krabby patty") || order.toLowerCase().equals("triplekrabbypatty")) {
+                items.add("Triple Krabby Patty");
+            } else if (order.toLowerCase().equals("krabby meal") || order.toLowerCase().equals("krabbymeal")) {
+                items.add("Krabby Meal");
+            } else if (order.toLowerCase().equals("double krabby meal") || order.toLowerCase().equals("doublekrabbymeal")) {
+                items.add("Double Krabby Meal");
+            } else if (order.toLowerCase().equals("triple krabby meal") || order.toLowerCase().equals("triplekrabbymeal")) {
+                items.add("Triple Krabby Meal");
+            } else if (order.toLowerCase().equals("salty sea dog") || order.toLowerCase().equals("saltyseadog")) { //line 100!!! #ihatemyself
+                items.add("Salty Sea Dog");
             }
         }
     }
