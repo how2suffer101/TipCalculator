@@ -278,8 +278,8 @@ public class TipCalculator {
         }
     }
 }
-//it's finally over
-//i loved and hated every second of this
-//i blame past me for making present me (which is now also past me technically) go through all of this
-//this was not beneficial to my sanity whatsoever
-//credit to johnathan (or was it justin?) for giving me this idea
+/* it's finally over
+i loved and hated every second of this
+i blame past me for making present me (which is now also past me technically) go through all of this
+this was not beneficial to my sanity whatsoever
+credit to johnathan (or was it justin?) for giving me this idea */
