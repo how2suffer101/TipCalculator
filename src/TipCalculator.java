@@ -173,6 +173,7 @@ public class TipCalculator {
                 if (validOrder) {
                     System.out.print("(Enter how many you would like here): ");
                     amt = scan.nextInt();
+                    scan.nextLine();
                     amounts.add(amt);
                     System.out.println();
                     validOrder = false;
@@ -187,15 +188,17 @@ public class TipCalculator {
         System.out.println("Squidward: Alright, how many people do you have with you? This hunk of junk can't handle over 50 anyways");
         System.out.print("(Enter how many people will be eating, if the amount is above 50 then an additional tax is added): ");
         int people = scan.nextInt();
+        scan.nextLine();
         double taxPeople = 0;
         if (people > 50) {
-            taxPeople = 10;
+            taxPeople = 0.10;
             taxPeople += (double) ((people - 50) / 5) / 100;
         }
         System.out.println();
         System.out.println("Squidward: Great, what would you like to tip? For having to deal with you, I feel like I deserve at least 20%..."); //also average fast food worker
         System.out.print("(Enter the tip here, any whole number that is 0 or greater): ");
         double tip = (double) scan.nextInt() / 100;
+        scan.nextLine();
         System.out.println();
         System.out.println("Squidward: Alright Spongebob, here's the order. Don't mess it up!"); //squidward is the worst coworker, prove me wrong
         System.out.println("Sponegbob: On it!"); //spongebob is literally him
