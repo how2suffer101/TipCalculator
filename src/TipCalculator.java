@@ -1,3 +1,4 @@
+//all the imports are up here (say hi)
 import java.text.DecimalFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -7,11 +8,14 @@ this is a very bad idea but i love bad ideas
 this will also take a while
 these comments are mainly me documenting my descent into insanity but you are welcome to read along
 (some are actually useful if you want to see how the code is organized so maybe read all of them..?)
-enjoy dining at the krusty krab, where the pizza is the pizza for you and me (real quote)
+and don't forget,
+THE KRUSTY KRAB PIZZA IS THE PIZZA FOR YOU AND MEEEEEEEEEEEEEEEEEEEEEEEE
 */
 
+//the entirety of the code goes in here (obviously)
 public class TipCalculator {
     public static void main(String[] args) {
+        //all the objects that i will be using (these are all essential to my descent into madness and the code)
         Scanner scan = new Scanner(System.in);
         Random r = new Random();
         DecimalFormat df = new DecimalFormat("##.00");
@@ -20,7 +24,7 @@ public class TipCalculator {
         System.out.println("Welcome to the Krusty Krab!");
         System.out.println();
 
-        //galley grubs menu right here (took forever to type)
+        //galley grubs menu right here (took forever to type), users will look at this and enter what they want
         System.out.println("-----------GALLEY GRUBS-----------");
         System.out.println();
         System.out.println("KRABBY PATTY.................$1.25");
@@ -56,15 +60,17 @@ public class TipCalculator {
         boolean luckyTax = false;
         double krabsTax = 0;
 
+        //upperLimit is just the placeholder name for the variable that will go into all the random statements, it gets updated often
         int upperLimit = 3;
 
+        //the lists get their own section since they are pretty cool
         List<String> items = new ArrayList<>();
         List<Integer> amounts = new ArrayList<>();
         List<Double> costs = new ArrayList<>();
-        List<String> dialogueSquidward = new ArrayList<>() {{
+        List<String> dialogueSquidward = new ArrayList<>() {{ //the dialogue lists, so that unique things are said instead of the same lines every time
             add("Squidward: We don't have all day here, what else would you like to order?");
             add("Squidward: Alright, what's next? Or are you done?");
-            add("Squidward: How can anyone even eat this food, it's repulsive!");
+            add("Squidward: How can anyone even eat this food, it's repulsive!"); //the next two require a special condition to be met in order to have a chance to be printed (it comes up later)
             add("Squidward: You might as well order the entire Krusty Krab, Patrick would appreciate that."); //wow, rude
             add("Squidward: Please, don't order anything else, for my sake."); //average fast food worker
         }};
@@ -72,11 +78,11 @@ public class TipCalculator {
             add("Spongebob: Ooooorder up!"); //literally so iconic that i couldn't not include this
             add("Spongebob: All done! Enjoy!");
             add("Spongebob: It helps having the best coworker ever to brighten the work day, right Squidward?"); //unique Squidward dialogue if this is printed
-            add("Spongebob: Wow, a personal best for this amount of food! Man, I'm good!");
+            add("Spongebob: Wow, a personal best for this amount of food! Man, I'm good!"); //this one here also requires a different condition in order to be printed
         }};
 
-        //while loop goes here, pray that it works for my sanity (update 1: it did not work and im going insane)
-        while (!order.equalsIgnoreCase("done")) {
+        //while loop goes here, pray that it works for my sanity (update 1: it did not work and im going insane) (update 2: it worked :D)
+        while (!order.equalsIgnoreCase("done")) { //equalsIgnoreCase came in clutch since I don't have to check EVERY capitalization for each word
             if (items.size() > 5) {
                 upperLimit += 2;
             }
@@ -89,7 +95,7 @@ public class TipCalculator {
                 System.out.print("(Enter 'done' to finish your order, or enter another item you want here): ");
                 order = scan.nextLine();
             }
-            //the great wall of if statements, this is going to take forever to type out
+            //the great wall of if statements, this is going to take forever to type out, but it does update 2 of the lists at the same time
             if (!Objects.equals(order, "")) {
                 if (order.equalsIgnoreCase("krabby patty") || order.equalsIgnoreCase("krabbypatty")) {
                     items.add("Krabby Patty");
@@ -168,13 +174,12 @@ public class TipCalculator {
                     costs.add(2.00);
                     validOrder = true;
                 }
-
-                //testing
+                //validOrder just makes sure that you aren't entering random stuff before running the next section of code.
                 if (validOrder) {
                     System.out.print("(Enter how many you would like here): ");
                     amt = scan.nextInt();
                     scan.nextLine();
-                    amounts.add(amt);
+                    amounts.add(amt); //and here is where the third list gets updated
                     System.out.println();
                     validOrder = false;
                 } else {
@@ -184,7 +189,7 @@ public class TipCalculator {
                 }
             }
         } //the end of the while loop!
-        System.out.println();
+        System.out.println(); //extra tax #1
         System.out.println("Squidward: Alright, how many people do you have with you? This hunk of junk can't handle over 50 anyways");
         System.out.print("(Enter how many people will be eating, if the amount is above 50 then an additional tax is added): ");
         int people = scan.nextInt();
@@ -197,7 +202,7 @@ public class TipCalculator {
         System.out.println();
         System.out.println("Squidward: Great, what would you like to tip? For having to deal with you, I feel like I deserve at least 20%..."); //also average fast food worker
         System.out.print("(Enter the tip here, any whole number that is 0 or greater): ");
-        double tip = (double) scan.nextInt() / 100;
+        double tip = (double) scan.nextInt() / 100; //tip, entered as an integer then gets divided by 100 immediately
         scan.nextLine();
         System.out.println();
         System.out.println("Squidward: Alright Spongebob, here's the order. Don't mess it up!"); //squidward is the worst coworker, prove me wrong
@@ -213,7 +218,7 @@ public class TipCalculator {
             }
         } else if (items.size() > 5) {
             try {
-                TimeUnit.SECONDS.sleep(4);
+                TimeUnit.SECONDS.sleep(4); //longer cooking time
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -227,7 +232,7 @@ public class TipCalculator {
         upperLimit = 20;
         if (r.nextInt(upperLimit) == 13) {
             System.out.println("Mr. Krabs: Hey! It seems you are our 'lucky' customer! You get to pay a discounted price of 200% of what you were going to pay!"); //average crab
-            System.out.println("Squidward: Hehe, sucker."); //#9002
+            System.out.println("Squidward: Hehe, sucker."); //#9002, as well as extra tax #2
             krabsTax = 2.0;
             luckyTax = true;
         }
@@ -237,21 +242,22 @@ public class TipCalculator {
             throw new RuntimeException(e);
         }
         System.out.println();
-        System.out.println("-------------RECEIPT--------------");
+        System.out.println("-------------RECEIPT--------------"); //and here is the receipt
         System.out.println();
         for (int i = 0; i < items.size(); i++) {
             System.out.println(amounts.get(i) + "x " + items.get(i) + ": $" + df.format((amounts.get(i) * costs.get(i))));
-        }
+        } //a lot goes on in the line above; the "amounts.get(i) and items.get(i) both get the items you ordered in order
+        //and their corresponding amounts, and the last part prints out the product of the cost of one item and how many you got
         System.out.println();
         System.out.println("------TOTAL, TIPS, and TAXES------");
         System.out.println();
         double total = 0;
         for (int j = 0; j < amounts.size(); j++) {
-            total += (amounts.get(j) * costs.get(j));
+            total += (amounts.get(j) * costs.get(j)); //adds up all the costs for the total
         }
         System.out.println("Total (Before tips + taxes): $" + df.format(total));
         if (people > 50) {
-            System.out.println("Over-Capacity TAX: " + (taxPeople * 100) + "%");
+            System.out.println("Over-Capacity TAX: " + (taxPeople * 100) + "%"); //ugh, taxes
         }
         if (luckyTax) {
             System.out.println("Krabs' TAX: " + (krabsTax * 100) + "%");
