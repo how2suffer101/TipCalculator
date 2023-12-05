@@ -234,7 +234,7 @@ public class TipCalculator {
             System.out.println("Mr. Krabs: Hey! It seems you are our 'lucky' customer! You get to pay a discounted price of 200% of what you were going to pay!"); //average crab
             System.out.println("Squidward: Hehe, sucker."); //#9002, as well as extra tax #2
             krabsTax = 2.0;
-            luckyTax = true;
+            luckyTax = true; //ironic, amiright?
         }
         try {
             TimeUnit.SECONDS.sleep(2);
@@ -260,7 +260,7 @@ public class TipCalculator {
             System.out.println("Over-Capacity TAX: " + (taxPeople * 100) + "%"); //ugh, taxes
         }
         if (luckyTax) {
-            System.out.println("Krabs' TAX: " + (krabsTax * 100) + "%");
+            System.out.println("Krabs' TAX: " + (krabsTax * 100) + "%"); //ugh, taxes (again)
         }
         System.out.println("Tip: " + (tip * 100) + "%");
         System.out.println();
